@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Title Here</title>
+    <title>{% block title %}{% endblock  %}</title>
     {% include 'css.html' %}
     {% include 'js.html' %}
 </head>
@@ -16,7 +16,7 @@
     {% include 'header.html' %}
     <br><br>
     <div>
-        {{ content }}
+        {% block content %}{% endblock content %}
     </div>
     <br>
     <footer>

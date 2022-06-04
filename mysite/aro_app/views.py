@@ -1,7 +1,6 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
 from . models import SearchLog
-from . utility import layout
 from . raw_query import raw_query
 
 # Create your views here.
@@ -9,9 +8,14 @@ from . raw_query import raw_query
 
 def home(request):
     AroVar = {"alpha": "A", "bita": "B", "gamma": 'C'}
-    GetInfo = SearchLog.objects.all()
-    commodities = raw_query("SELECT * FROM `commodities`")
-    return layout(request, 'home.html', {"GetInfo": GetInfo, "AroVar": AroVar, "commodities": commodities})
+    return render(request, 'aro_app/home.html', {"AroVar": AroVar})
 
-    # return layout(request, 'home.html', AroVar)
-    # return render(request, 'layout.html')
+
+def about(request):
+    GetInfo = SearchLog.objects.all()
+    return render(request, 'aro_app/about.html', {"GetInfo": GetInfo})
+
+
+def contact(request):
+    commodities = raw_query("SELECT * FROM `commodities`")
+    return render(request, 'aro_app/contact.html', {"commodities": commodities})
